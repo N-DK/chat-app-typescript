@@ -1,0 +1,10 @@
+.container {
+    transition: 0.2s ease-in-out;
+    &:hover,
+    &.active {
+        transform: scale(1.1) translate(20px, 0px);
+        background: #3c3e45;
+        box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+}
