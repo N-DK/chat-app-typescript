@@ -1,8 +1,21 @@
 import { faBorderAll } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UserChatBox } from '../../UserChatbox';
+import { useEffect, useState } from 'react';
+import { getConversations } from '../../../services';
 
 const Inbox: React.FC = () => {
+    const [conversations, setConversations] = useState([]);
+
+    useEffect(() => {
+        const fetch = async () => {
+            const res = await getConversations();
+            setConversations(res?.data);
+        };
+
+        fetch();
+    }, []);
+
     return (
         <div className="bg-[#24262e] w-4/12 h-full rounded-lg px-6 py-7 text-white">
             <div>
@@ -21,13 +34,9 @@ const Inbox: React.FC = () => {
                     </button>
                 </div>
                 <div className="overflow-y-clip max-h-[600px]">
-                    <UserChatBox />
-                    <UserChatBox />
-                    <UserChatBox />
-                    <UserChatBox />
-                    <UserChatBox />
-                    <UserChatBox />
-                    <UserChatBox />
+                    {conversations?.map((conversation, index) => (
+                        <UserChatBox key={index} data={conversation} />
+                    ))}
                 </div>
             </div>
         </div>

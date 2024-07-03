@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { User } from '../../User';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ username: string | undefined }> = ({ username }) => {
     return (
         <div className="bg-[#24262e] w-full h-[82px] rounded-lg">
             <div className="w-full flex items-center justify-between h-full px-6 text-white">
@@ -18,8 +18,8 @@ const Header: React.FC = () => {
                         <FontAwesomeIcon icon={faBell} />
                     </div>
                     <User
-                        url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZOIcF9043WMrXhXo05OIOuMM1br5MBu8_FQ&s"
-                        name="Rona Zepri"
+                        avatarURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZOIcF9043WMrXhXo05OIOuMM1br5MBu8_FQ&s"
+                        name={`` + username}
                     />
                 </div>
             </div>
